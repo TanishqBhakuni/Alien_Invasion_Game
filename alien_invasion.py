@@ -59,7 +59,7 @@ class AlienInvasion:
         """Respond to keypresses and mouse events."""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                self.stats.save_high_score()   # ✅ save high score before quitting
+                self.stats.save_high_score()
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
@@ -80,7 +80,7 @@ class AlienInvasion:
             self.stats.reset_stats()
             self.game_active = True
 
-            # Refresh scoreboard images (✅ refactored)
+            # Refresh scoreboard images 
             self.sb.prep_images()
 
             # Get rid of any remaining bullets and aliens.
@@ -101,7 +101,7 @@ class AlienInvasion:
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = True
         elif event.key == pygame.K_q:
-            self.stats.save_high_score()   # ✅ save before quitting with Q
+            self.stats.save_high_score()   
             sys.exit()
         elif event.key == pygame.K_SPACE:
             self._fire_bullet()
@@ -143,7 +143,6 @@ class AlienInvasion:
             self.sb.check_high_score()
 
         if not self.aliens:
-            # ✅ Refactored into a method
             self.start_new_level()
 
     def start_new_level(self):
